@@ -1,3 +1,5 @@
+import { useState } from "react";
+import Counter from "./components/Counter";
 import Hello from "./components/Hello";
 import TPEvent from "./components/TPEvent";
 
@@ -70,9 +72,15 @@ function App() {
   //   );
   // }
 
+  const [showCounter, setShowCounter] = useState(true);
   return (
     <>
       <TPEvent />
+      <hr />
+      <button onClick={() => setShowCounter((s) => !s)}>Show Counter</button>
+
+      {showCounter && <Counter />}
+
       <hr />
 
       <Hello firstName="Fred" name="GAURAT" showTitle={isShow} />
