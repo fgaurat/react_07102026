@@ -1,4 +1,5 @@
 import Hello from "./components/Hello";
+import TPEvent from "./components/TPEvent";
 
 interface Todo {
   id: number;
@@ -71,6 +72,9 @@ function App() {
 
   return (
     <>
+      <TPEvent />
+      <hr />
+
       <Hello firstName="Fred" name="GAURAT" showTitle={isShow} />
       <Hello firstName="Robert" name="DUPONT" showTitle={!isShow} />
 
