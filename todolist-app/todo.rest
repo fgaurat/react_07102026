@@ -1,0 +1,74 @@
+@baseUrl = http://localhost:3000
+@contentType = application/json
+
+### Lister tous les todos
+GET {{baseUrl}}/todos
+
+###
+
+### Récupérer un todo par id
+GET {{baseUrl}}/todos/1
+
+###
+
+### Filtrer : todos non terminés d'un utilisateur
+GET {{baseUrl}}/todos?userId=2&completed=false
+
+###
+
+### Pagination (json-server) : page 1, 5 éléments
+GET {{baseUrl}}/todos?_page=1&_limit=5
+
+###
+
+### Recherche plein texte (json-server)
+GET {{baseUrl}}/todos?q=test
+
+###
+
+### Créer un todo
+# @name createTodo
+POST {{baseUrl}}/todos
+Content-Type: {{contentType}}
+
+{
+    "title": "test rest",
+    "userId": 2,
+    "completed": false
+}
+
+###
+
+### Récupérer l'id du todo créé ci-dessus
+@createdId = {{createTodo.response.body.id}}
+
+### Lire le todo créé
+GET {{baseUrl}}/todos/{{createdId}}
+
+###
+
+### Remplacer entièrement un todo (PUT)
+PUT {{baseUrl}}/todos/{{createdId}}
+Content-Type: {{contentType}}
+
+{
+    "title": "test rest (modifié)",
+    "userId": 2,
+    "completed": false
+}
+
+###
+
+### Modifier partiellement un todo (PATCH)
+PATCH {{baseUrl}}/todos/{{createdId}}
+Content-Type: {{contentType}}
+
+{
+    "completed": true
+}
+
+###
+
+### Supprimer un todo
+DELETE {{baseUrl}}/todos/{{createdId}}
+
