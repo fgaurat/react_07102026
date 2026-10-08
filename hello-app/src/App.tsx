@@ -2,6 +2,7 @@ import { useState } from "react";
 import Counter from "./components/Counter";
 import Hello from "./components/Hello";
 import TPEvent from "./components/TPEvent";
+import Form from "./components/Form";
 
 interface Todo {
   id: number;
@@ -75,6 +76,10 @@ function App() {
   const [showCounter, setShowCounter] = useState(true);
   return (
     <>
+      <hr />
+      <Form />
+      <hr />
+
       <TPEvent />
       <hr />
       <button onClick={() => setShowCounter((s) => !s)}>Show Counter</button>
