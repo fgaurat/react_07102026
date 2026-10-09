@@ -1,12 +1,14 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import type { Todo } from "../types/todo";
-import { useTodos } from "../hooks/useTodos";
 
-function TodoForm() {
-  const { saveTodo } = useTodos();
+interface TodoFormProps {
+  saveTodo: (t: Todo) => void;
+}
 
+function TodoForm({ saveTodo }: TodoFormProps) {
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm<Todo>();
@@ -15,6 +17,7 @@ function TodoForm() {
     // {title:"le titre",completed: false}
     console.log(data);
     saveTodo(data);
+    reset();
   };
   // register("title") => {name:"title"}
   return (
